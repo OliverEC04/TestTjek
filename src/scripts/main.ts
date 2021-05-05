@@ -86,4 +86,3 @@ function rule168(times): boolean
         return false;
     }
 }
-
