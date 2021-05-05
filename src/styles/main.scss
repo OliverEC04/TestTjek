@@ -1,6 +1,7 @@
-#check
+body
 {
-    display: none;
+    margin: 0;
+    text-align: center;
 }
 
 .state
@@ -21,6 +22,8 @@
 
 #check
 {
+    display: none;
+
     .label
     {
         color: green;
