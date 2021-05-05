@@ -1,3 +1,5 @@
+// https://developers.google.com/identity/sign-in/web/sign-in
+
 function onSignIn(googleUser)
 {
     var profile = googleUser.getBasicProfile();
