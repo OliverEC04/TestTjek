@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="main.min.css">
+    </head>
+    <body>
+        <h1>TestTjek</h1>
+        <div id="test" class="state">
+            <p class="label">Test</p>
+            <p>Du skal testes!</p>
+        </div>
+        <div id="check" class="state">
+            <p class="label">Tjek</p>
+            <p>Du har en gyldig test, gå i skole</p>
+        </div>
+        <form id="timeForm" onsubmit="submitTime()" action="javascript:void(0);">
+            <label>Tilføj testtidspunkt:</label>
+            <br>
+            <input id="datetime" type="datetime-local">
+            <br>
+            <input id="submit" type="submit">
+        </form>
+        <h3>Dine testtidspunkter:</h3>
+        <div id="timeList">
+        </div>
+    </body>
+    <script src="script.js"></script>
+</html>

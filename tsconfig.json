@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "watch": true,
+        "lib": ["DOM", "ESNext"],
+        "outFile": "./public/script.js",
+        "removeComments": true,
+    }
+}
