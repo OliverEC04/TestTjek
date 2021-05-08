@@ -1,16 +1,34 @@
 function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId());
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail());
+    profile = googleUser.getBasicProfile();
 }
-let date = new Date();
+const apiUrl = "http://localhost:8973/api";
+let profile;
+let date;
 let times = [];
-function submitTime() {
+window.onload = () => {
+    date = new Date();
+};
+async function getApi(search) {
+    let response = await fetch("http://localhost:8973/api");
+    let data = await response.json();
+    console.log(data);
+}
+async function sendApi(data) {
+    let options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    };
+    return await fetch(apiUrl, options)
+        .then(response => { return response.json(); });
+}
+async function submitTime() {
     let datetime = document.querySelector("#datetime").value;
     times.push({ unix: new Date(datetime).getTime() / 1000, str: datetime });
     times.sort((a, b) => (a.unix > b.unix) ? -1 : 1);
+    console.log(await sendApi({ hej: "hej" }));
     updateTimeList();
     updateLabel();
 }

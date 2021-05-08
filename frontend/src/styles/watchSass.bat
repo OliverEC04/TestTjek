@@ -1,0 +1,1 @@
+sass --watch frontend/src/styles:frontend/public/main.css

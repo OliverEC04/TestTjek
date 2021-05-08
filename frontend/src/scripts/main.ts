@@ -1,13 +1,62 @@
-let date: Date = new Date();
+const apiUrl: string = "http://localhost:8973/api";
+
+let profile;
+let date: Date;
 let times = [];
 
-function submitTime(): void
+window.onload = () => {
+    date = new Date();
+
+    // let data = {test: "jatak"};
+    // let options = {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify(data)
+    // };
+
+    // fetch("http://localhost:8973/api", options)
+    // .then((response) => {
+    //     let json = response.json();
+    //     return json;
+    // })
+    // .then((result) => {
+    //     console.log(result);
+    // });
+
+    // getApi();
+};
+
+async function getApi(search?)
+{
+    let response = await fetch("http://localhost:8973/api");
+    let data = await response.json();
+    console.log(data);    
+}
+
+async function sendApi(data: object)
+{
+    let options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    };
+
+    return await fetch(apiUrl, options)
+    .then(response => { return response.json() });
+}
+
+async function submitTime()
 {
     let datetime: string = document.querySelector("#datetime").value;
 
     times.push({unix: new Date(datetime).getTime() / 1000, str: datetime});
     times.sort((a, b) => (a.unix > b.unix) ? -1 : 1);
 
+    console.log(await sendApi({hej: "hej"}));
     updateTimeList();
     updateLabel();
 }
