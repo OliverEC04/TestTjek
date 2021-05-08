@@ -28,7 +28,17 @@ async function submitTime() {
     let datetime = document.querySelector("#datetime").value;
     times.push({ unix: new Date(datetime).getTime() / 1000, str: datetime });
     times.sort((a, b) => (a.unix > b.unix) ? -1 : 1);
-    console.log(await sendApi({ hej: "hej" }));
+    if (profile === undefined) {
+        console.log("Sign in to save test times");
+    }
+    else {
+        console.log(await sendApi({
+            pid: profile.getId(),
+            name: profile.getName(),
+            timestamp: date.getTime(),
+            testTime: datetime,
+        }));
+    }
     updateTimeList();
     updateLabel();
 }

@@ -19,6 +19,7 @@ app.get("/api", (request, response) => {
 app.post("/api", (request, response) => {
     console.log("request received on server");
     console.log(request.body);
+    database.insert(request.body);
 
     response.json({
         status: "success",
